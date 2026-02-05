@@ -34,6 +34,9 @@ Route::middleware(['auth'])->group(function () {
     // Proses Pendaftaran Seminar
     Route::post('/daftar-seminar/proses', [PesertaController::class, 'daftar'])->name('pendaftaran.store');
 
+    // Download Sertifikat
+    Route::get('/sertifikat/{kode_pendaftaran}/download', [App\Http\Controllers\CertificateController::class, 'download'])->name('sertifikat.download');
+
     // Logout Peserta
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
@@ -67,4 +70,6 @@ Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
     Route::post('/absensi/checkin', [AdminController::class, 'checkIn'])->name('admin.absensi.checkin');
 
     Route::get('/sertifikat', [AdminController::class, 'sertifikat'])->name('admin.sertifikat');
+    // Fix: Rute khusus admin untuk download sertifikat agar tidak redirect ke login peserta
+    Route::get('/sertifikat/{kode_pendaftaran}/download', [App\Http\Controllers\CertificateController::class, 'download'])->name('admin.sertifikat.download');
 });
