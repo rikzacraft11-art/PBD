@@ -22,13 +22,16 @@ class RedirectIfAuthenticated
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
 
+                // Normalisasi nama guard (jika null, berarti default 'web')
+                $guardName = $guard ?? 'web';
+
                 // Jika login sebagai admin (guard: admin)
-                if ($guard === 'admin') {
+                if ($guardName === 'admin') {
                     return redirect()->route('admin.dashboard');
                 }
 
-                // Jika login sebagai peserta (guard: web / default)
-                if ($guard === 'web') {
+                // Jika login sebagai peserta (guard: web)
+                if ($guardName === 'web') {
                     return redirect()->route('portal.index');
                 }
 
