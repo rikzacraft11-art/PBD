@@ -574,14 +574,14 @@
                     if (data.seminar.pendaftarans?.length > 0) {
                         data.seminar.pendaftarans.forEach((p, i) => {
                             rows += `<tr>
-                                    <td class="text-muted small">${i + 1}</td>
-                                    <td class="fw-bold text-primary">${p.peserta?.nim_peserta || '-'}</td>
-                                    <td>
-                                        <div class="fw-semibold">${p.peserta?.nama_peserta || 'Unknown'}</div>
-                                        <small class="text-muted">${p.peserta?.email || '-'}</small>
-                                    </td>
-                                    <td class="small text-muted">${new Date(p.tanggal_pendaftaran).toLocaleDateString('id-ID')}</td>
-                                </tr>`;
+                                        <td class="text-muted small">${i + 1}</td>
+                                        <td class="fw-bold text-primary">${p.peserta?.nim_peserta || '-'}</td>
+                                        <td>
+                                            <div class="fw-semibold">${p.peserta?.nama_peserta || 'Unknown'}</div>
+                                            <small class="text-muted">${p.peserta?.email || '-'}</small>
+                                        </td>
+                                        <td class="small text-muted">${new Date(p.tanggal_pendaftaran).toLocaleDateString('id-ID')}</td>
+                                    </tr>`;
                         });
                     } else {
                         rows = '<tr><td colspan="4" class="text-center py-4 text-muted small">Belum ada pendaftar.</td></tr>';
